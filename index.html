@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>استبيان</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <form class="card" novalidate>
+      <h1 class="title">استبيان</h1>
+
+      <label class="field">
+        <span>الاسم *</span>
+        <input type="text" name="name" placeholder="اكتب هنا" minlength="2" maxlength="100" required />
+        <small>اسم مطلوب من 2 إلى 100 حرف.</small>
+      </label>
+
+      <label class="field">
+        <span>البريد الإلكتروني *</span>
+        <input type="email" name="email" placeholder="name@gmail.com" required />
+        <small>سنستخدمه للتواصل حول نتيجة الاستبيان.</small>
+      </label>
+
+      <div class="row-2">
+        <label class="field">
+          <span>رقم الهاتف</span>
+          <input type="tel" name="phone" placeholder="05xxxxxxxx" pattern="^[+0-9/\-\s]+$" />
+          <small>أرقام فقط ويمكن + أو 0 أو - أو /</small>
+        </label>
+
+        <label class="field">
+          <span>رابط (URL)</span>
+          <input type="url" name="website" placeholder="ضع رابط موقع" pattern="^https?://.+$" />
+          <small>اختياري — يجب أن يبدأ بـ http:// أو https://</small>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>اختر موضوعًا</span>
+        <select name="topic" required>
+          <option value="" hidden selected>اختر موضوعًا</option>
+          <option value="satisfaction">رضا المستخدم</option>
+          <option value="quality">جودة الخدمة</option>
+          <option value="suggestions">اقتراحات التحسين</option>
+          <option value="other">أخرى</option>
+        </select>
+      </label>
+
+      <div class="actions">
+        <button type="submit" class="btn primary">ارسال الاجابات</button>
+        <button type="reset" class="btn ghost">مسح دخول</button>
+      </div>
+    </form>
+  </main>
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.querySelector(':invalid')?.focus();
+      }
+    });
+  </script>
+</body>
+</html>
